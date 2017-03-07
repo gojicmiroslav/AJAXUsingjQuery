@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>undestand Ajax</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div>Input text: <input type="text" id="user_text"></div><br />
+<div>Server response: <input type="text" id="server_response" readonly=""></div><br />
+
+<script>
+
+$(document).ready(function(){
+
+	$("#user_text").on("keyup", function(){
+		var current_text = $(this).val();
+
+		$.get("server.php", { user_text: current_text })
+			.done(function(response){
+				$("#server_response").val(response);	
+			});
+	});
+
+});
+
+</script>
+
+</body>
+</html>
